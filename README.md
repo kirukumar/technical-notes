@@ -5,5 +5,5 @@
 #### 🧠 *Section 1: IntelliJ IDEA Shortcuts*
 *Gives Short hand Syntax while working with intellige Idea.*
 #### ☁️ *Section 2: AWS*
-##### * Cloudfront*
+##### *Cloudfront*
 *Gives Detailed Information of CloudFront in AWS.*
