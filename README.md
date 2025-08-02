@@ -1,5 +1,6 @@
-# technical-notes
-Notes Available For learning
+🚀 Technical Notes.
+Your personal knowledge vault for mastering the dev universe
 
-# Sections
-  1) IntelligeIdea Shortcuts to work with intelligeIdea. 
+📚 Knowledge Sections
+🧠 Section 1: IntelliJ IDEA Shortcuts
+Section 2: AWS CloudFront
