@@ -1,4 +1,4 @@
-### 🚀 Technical Notes.
+## 🚀 Technical Notes.
 *Your personal knowledge vault for mastering the dev universe*
 
 ### 📚 Knowledge Sections
