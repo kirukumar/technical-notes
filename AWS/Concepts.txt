@@ -1,0 +1,59 @@
+***************************************************************************
+DYNAMODB
+***************************************************************************
+OVERVIEW - (CREATING TABLE, EXECUTIONG SCAN, QUERY)
+SORT KEY
+SCAN AND QUERY
+READ AND WRITE CAPACITY UNITS(IMP)
+READ CONSISTENCIES
+LOCAL SECONDARY INDEX
+GLOBAL SECONDARY INDEX
+POINT IN TIME RECOVERY
+RESTORING AFTER RECOVERY
+GLOBAL TABLES
+EXPORT DYNAMODB DATA TO S3 (Not Working)
+IMPORTING S3 DATA INTO DYNAMODB(Not Working)
+
+***************************************************************************
+APIGATEWAY
+***************************************************************************
+PURPOSE
+HTTP API INTEGRATION
+REST API INTEGRATION
+CREATING METHODS AND RESOURCES FOR APIS
+MOCK INTEGRATION(DUMMY APIS)
+INTEGRATION WITH AWS SERVICE
+
+
+
+***************************************************************************
+CLOUD FRONT
+***************************************************************************
+OVERVIEW, PURPOSE AND CREATION
+CLOUDFRONT INVALIDATION
+SECURING RESTRICTING DIRECT ACCESS TO EC2/ALB.
+CLOUDFRONT WITH S3 PRIVATE BUCKET.
+CLOUDFRONT PATH BASED ROUTING WITH MULTIPLE ORIGIN
+CLOUDFRONT CUSTOM ERROR PAGE
+GEOGRAPHIC RESTRICTION
+DELETE/DISABLE CLOUDFRONT
+PROJECT WALK THROUGH
+
+
+***************************************************************************
+IAM
+***************************************************************************
+USERS
+GROUPS
+PASSWORD POLICY
+MFA FOR ROOT USER AND OTHER USER
+ACCESSING ACCOUNT USING AWS CLI
+IAM ROLES
+CLOUD SHELL
+
+
+***************************************************************************
+S3
+***************************************************************************
+
+
