@@ -1,0 +1,19 @@
+Whenever you are returning policies from Lambda then the syntax should be has
+
+  policy = {
+        "principalId": "user123",
+        "policyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Action": "execute-api:Invoke",
+                    "Effect": "Allow",
+                    "Resource": "arn:aws:execute-api:ap-south-1:967277550002:55pfwucyrd/*/GET/"
+                }
+            ]
+        }
+    }
+
+    return policy
+    
+    
