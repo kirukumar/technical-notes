@@ -1,0 +1,94 @@
+# Proxy integration
+
+- When Lambda proxy is not enabled, all the inbuilt variables tht are present in the API Gateway is not sent to the Backend.
+- You will have MappingTemplate Option inorder to form the request.
+
+    Response From Lambda: {"statusCode": 200, "body": "{\"event\": {}}"}
+
+- When Lambda Proxy is enabled, all the inbuilt variables are sent from the API Gateway to the Backend. Eg: PathVariables, Query param.
+- You will not have MappingTemplate Option inorder to form the request. You cannot modify the data.
+
+    Response From Lambda: 
+    {"event": 
+    {"resource": "/lambda/student", 
+    "path": "/lambda/student", 
+    "httpMethod": "GET", 
+    "headers": null, 
+    "multiValueHeaders": null,
+     "queryStringParameters": null, 
+     "multiValueQueryStringParameters": null, 
+     "pathParameters": null, 
+     "stageVariables": null, 
+     "requestContext": {
+        "resourceId": "7yo13o", 
+        "resourcePath": "/lambda/student",
+        ..............
+
+if I pass Query Param, I will get it in the lambda in the Query parameter section.
+
+# Method Request
+While Enabling Validation to the apis in the integration Request, you need to enable request validator. By Default it will be set to null.
+Without Enabling if you add the required fields it will not be applied.
+For Validating Body you need to create model and model requires json schema.
+
+
+#For HTTP Proxy Integration
+When Enabled, you will get all the params, headers that we are additionally passing.
+when Disabled, you will not get the headers, params that additionally you are passing default ones will be available and the ones mapped in Integration Request will be given.
+
+# Modifying Request in HTTP
+- Whenever you are trying to modify request like header or QueryString in the integration Request, it should be present in the methodRequest Validation.
+- If the proxy is enabled you will get all the requests + modified requests in the integration Request.
+- Request Body is not present for Modification when proxy is enabled. Whatever you send will be recieved has it is.
+
+
+When Modifying request body before sending to Lambda, you many get parsing error. You can either use
+{
+"query":{
+ "pagebody": "$input.params('page')",
+ "sizeBody": "$input.params('size')"
+},
+"path": "$input.params('studentId')",
+"data": "$util.escapeJavaScript($input.json('$'))" // util.escapeJavaScript or  "data":$input.json('$')
+
+}
+
+The above gives the entire body.
+
+
+#IntegrationResponse
+- With Proxy Enabled , you will get the response in the same way has it is, you cannot do any modifications in the lambda. it should be the standard way.
+statusCode, body, headers
+ 'statusCode': 200,
+        'body': json.dumps('Hello from Lambda!'),
+        'headers':{    // if you change to header1 you will get Internal Server Error.
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'customHeader': 'customValue'
+        }
+
+-With Proxy Disabled you will get it in the response not in the standard format.
+{"statusCode": 200, "body": "\"Hello from Lambda!\"", "headers": {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*", "customHeader": "customValue"}}
+In this case if you want the values to come in header then you need to add it in the method Response and map the value in the IntegrationResponse.
+
+#API Gateway Mapping Template Syntaxes
+{
+'name':'Kiran',
+"lambdaOutput": "$input.path('$')",
+"lambdaOutputSingleQuote": "$input.path('$')",
+"lambdaOutputWithQuotes": $input.path("$"),
+"bodyWithoutParse": $input.path("$").body
+"bodyWithParse" : "$util.parseJson($input.body).body"
+}
+
+{
+"response": $input.path('$'),
+"responseWithString": "$input.path('$')",
+
+ "body": $input.path('$.body'),
+  "bodyWithString": "$input.path('$.body')",
+  
+  "userDetails": $util.parseJson($input.path('$.body')).userDetails
+  "userDetailsWithString": "$util.parseJson($input.path('$.body')).userDetails"
+  
+}

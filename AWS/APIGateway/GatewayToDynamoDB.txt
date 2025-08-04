@@ -1,0 +1,71 @@
+Integrating DynamoDB with API Gateway.
+
+# Getting all the Elements from the Table in DynamoDB.
+
+1) Create a API Gateway -> Get Method -> Choose -> AWS Service -> DynamoDB -> Provide Region.
+2) Create a Role for API Gateway to access DynamoDB. By Default you will be having a role created for API Gateway to access cloud Watxch.
+3) Provide the ACTION has Scan -> It is Case sensitive.
+4) Create the API Gateway.
+5) You need to specify which table to scan -> Edit the integration Request -> In the Mapping Temple Specify the table Name.
+    {
+        "TableName":"Users"
+    }
+
+
+# Posting Elements into DynamoDB from API Gateway
+
+1) Create a API Gateway -> Post Method -> Choose -> AWS Service -> DynamoDB -> Provide Region.
+2) Create a Role for API Gateway to access DynamoDB. By Default you will be having a role created for API Gateway to access cloud Watxch.
+3) Provide the ACTION has PutItem -> It is Case sensitive.
+4) Create the API Gateway.
+5) You need to specify which table to put the item -> Edit the integration Request -> In the Mapping Temple Specify the table Name.
+   You need to specify the Mapping Request here.
+   {
+  "TableName": "Users",
+  "Item": {
+    "userId": {
+      "N": "$input.path('$.userId')"
+    },
+    "name": {
+      "S": "$input.path('$.name')"
+    },
+    "age": {
+      "N": "$input.path('$.age')"
+    }
+  }
+}
+
+# Delete Elements in DynamoDB from API Gateway
+
+1)Create a API Gateway -> Delete Method -> Choose -> AWS Service -> DynamoDB -> Provide Region.
+2) Create a Role for API Gateway to access DynamoDB. By Default you will be having a role created for API Gateway to access cloud Watxch.
+3) Provide the ACTION has DeleteItem -> It is Case sensitive.
+4) Create the API Gateway.
+5) You need to specify which table to delete the item -> Edit the integration Request -> In the Mapping Temple Specify the table Name.
+   You need to specify the Mapping Request here.
+
+   {
+    "TableName": "Users",
+    "Key": {
+        "userId": {
+            "N": "$input.path('$.userId')"
+        }
+    }
+}
+
+
+# Json Convertor in Mapping Request Syntax
+
+-Always use quotes around mapping template variables: "$input.path('$.userId')"
+-Use $input.path() for JSON body fields with JSONPath syntax
+-Use $input.params() for URL/query/header parameters (no $ in parameter name)
+$input.json() used for retrieving json String.
+
+Data Type Mapping:
+
+"S" = String
+"N" = Number
+"BOOL" = Boolean
+"SS" = String Set
+"NS" = Number Set
+

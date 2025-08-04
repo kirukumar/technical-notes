@@ -1,0 +1,41 @@
+#For HTTP
+When Proxy enabled ->
+For Request Headers and Query Params
+Default Headers or params will be available which you are passing through url. you can map them in the integrationRequest and those will be available along with the default ones.
+
+For Request Body 
+whatever the data you are passing from the API Gateway will be available has it is in the HTTP.
+
+When proxy Disabled ->
+For Request Headers and Query Params
+None of the default Headers or params will be available which you are passing through url. you can map them in the integrationRequest and those will be available.
+
+For Request Body 
+hatever you are passing will be available in HTTP. 
+
+
+Mapping Template For Modifying will be available.
+
+#For Lambda
+
+When Proxy Enabled -> 
+
+For Request Headers and Query Params
+Whatever the data you are passing from the API Gateway will be available has it is in the lambda.
+
+For Request Body 
+Whatever the data you are passing from the API Gateway will be available has it is in the lambda.
+
+Mapping Template For Modifying will not be available.
+
+When proxy Disabled -> 
+
+For Request Headers and Query Params
+Whatever you are passing from API Gateway will not be available in the Lambda. By Default lambda will be empty.But you can make them Available through mapping Template.
+
+For Request Body 
+Whatever you are passing will be available in lambda. 
+
+
+Mapping Template For Modifying will be available.
+
