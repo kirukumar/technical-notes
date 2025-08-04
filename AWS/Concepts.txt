@@ -30,10 +30,7 @@ MODIFY REQUESTS BEFORE REACHING BACKEND IN API GATEWAY(INTEGRATION REQUEST) WITH
 MODIFY REQUEST BODY BEFORE REACHING BACKEND IN API GATEWAY(INTEGRATION REQUEST) WITH OR WOTHOUT PROXY.
 INTEGRATION REQUEST IN API GATEWAY WITH AWS LAMBDA WITH AND WITHOUT PROXY.
 INTEGRATION RESPONSE AND METHOD RESPONSE IN API GATEWAY WITG AWS LAMBDA WITH AND WITHOUT PROXY.
-
-
-
-
+AUTHENTICATE API GATEWAY USING IAM ROLES
 
 
 ***************************************************************************
@@ -67,3 +64,6 @@ S3
 ***************************************************************************
 
 
+***************************************************************************
+VPC
+***************************************************************************
