@@ -1,0 +1,112 @@
+TO remove a node from the cluster
+docker swarm leave in worker node.
+command: docker swarm leave
+
+..................
+inorder to remove the node from the swarm 
+in manager node
+cmd:docker node remove name
+
+............
+
+inspect command 
+docker node inspect nodename
+
+To make the worker node manager node.
+docker node promote workernode
+
+to demote to workernode 
+docker node demote workernode
+
+To create container in the swarm 
+docker service command can be used only in master
+
+cmd : docker service --help 
+To see all the options
+
+docker service create imageName ping 192.168.25.10
+
+docker service ls - To see the list of services
+
+docker service inspect serviceName or serviceId
+
+docker service logs
+
+docker service create -d --replicas 4 alpine - To create replicas
+
+if container is deleted the manager automatically restarts it because we need 4 replicas
+
+inorder to increase the replicas we make use of 
+
+scaling 
+
+docker service scale serviceId=7 
+
+port Mapping in service
+I can access the application in any ip in the node of the cluster.
+I can access the application by using any node ip.
+
+Mode 
+To equally create containers in each node
+docker service create mode = global alpine
+
+When I add a new node it automatically adds the container since the mode is global
+
+only to create service in specify node we can do it using --constraint="node.role==manager"
+
+docker labels
+docker node update --label-add ="ssd=true" worker01
+
+Now I can use contraint to create container only in that contraint 
+
+docker service create --constraint="node.labels.ssd==true" --replicas = 3 imageName 
+
+after the containers are created if we add the label to second node, the containers will not get shift. docker swarm automatically will not do that.
+ 
+docker overlay 
+
+node update command for node level update
+daemon.json command to update in the enigne level
+
+--availability of node
+
+docker node update --availability=pause worker02(nodename)
+
+Auto balancing doesnot work in  docker swarm
+
+active 
+pause - further task it will not accept but will run the existing node.
+drain - all the containers present are removed and equally spread between different nodes.
+
+docker --update-delay duration - after the 1st container is updated after how much time the next container should get updated.
+--update -parallelism unit - how much container should be updated parallel.
+
+docker secret 
+docker secret create dbpass - 
+enter and save
+
+To see docker secret ls
+
+To use 
+docker service create --secret secretName -e My_sql_root_password_file = /run/secrets/secretfileName inagename 
+stores in the /run/secrets
+
+
+overlay Network
+
+It deosnot support in Windows
+InGress Network - Type of Overlay Network which has inbuilt load balancer.
+
+we cant attach a container to overlay network
+
+By default whenever we create ovrlay network it will attach to the ingress network.
+
+
+docker stack
+
+
+
+
+
+
+

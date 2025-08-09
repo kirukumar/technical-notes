@@ -1,0 +1,41 @@
+Difference between Docker and VM. - Done
+
+Docker containers are lightweight application hosting environments.
+
+Like VMs, they are designed to be easily portable between different computers and isolate workloads.
+
+...........................
+
+However, one of the main differences between Docker and VMs is that Docker containers share OS resources with the server that hosts the Docker containers. VMs use a virtualized guest OS instead.
+
+................................
+
+Because sharing an OS consumes fewer resources than running standalone guest OSes on top of a host OS, Docker containers are more efficient, and admins can run more containers on a single host server than VMs. Docker containers also typically start faster than VMs because they don't boot a complete OS.
+
+
+................................
+
+Applications designed using a microservices architecture are a natural fit for Docker containers. This is because developers can deploy each microservice in a separate container and then integrate the containers to build out a complete application using orchestration tools, like Docker Swarm and Kubernetes, and a service mesh, like Istio or VMware Tanzu.
+
+
+Docker use Cases examples
+Microservices-based apps
+Pre-deployment application testing
+Early application development
+.deb packages managed by apt
+.rpm packages managed by yum
+Cost control
+
+........
+
+Resource Efficiency
+VMs, on the other hand, require a separate operating system for each instance, leading to higher resource consumption
+
+Faster Deployment: 
+
+ Containers can be spun up and down much faster than VMs since they do not require booting an entire operating system. 
+ 
+ Simplified Management: Managing multiple containers on a single host is generally less complex than managing multiple VMs. Containers can be orchestrated using tools like Kubernetes or Docker Swarm, which provide centralized management and automation capabilities. This simplification in management reduces operational overhead, leading to cost savings in terms of both time and human resources.
+ 
+ 
+ 
